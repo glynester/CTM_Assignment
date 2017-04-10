@@ -33,7 +33,7 @@ class Words
   end
 
   def count_words(text)
-    text = text.scan(/[\w]+['-]?[\w]+/)
+    text = text.scan(/[\w]+['-]?[\w]+/)     # Single letters not allowed by this!
     word_hash = Hash.new(0)
     text.each{|w| word_hash[w.downcase]+=1 }
     word_hash

@@ -23,12 +23,18 @@ describe Words do
     end
   end
 
-  before    { File.write('testfile.txt', "Contents of test file") }
+  before { File.write('mockedfile.txt', "A test file not a real file") }
   context 'Check file content' do
     subject {described_class.new}
     it "Should open the file provided and read the contents" do
-      expect(subject.open_file('testfile.txt')).to eq("Contents of test file")
+      expect(subject.open_file('mockedfile.txt')).to eq("A test file not a real file")
     end
+
+    it "should return a correct count of words" do
+      data = subject.open_file('mockedfile.txt')
+      expect(subject.count_words(data)).to include("file"=>2)
+    end
+
   end
 
 end
