@@ -36,8 +36,13 @@ describe Words do
     end
 
     it "should correctly determine if a number is prime or not" do
-      data = subject.open_file('mockedfile.txt')
       expect(subject.is_prime?(23456789)).to eq(true)
+    end
+
+    it "should add '(prime)' if the word count is prime" do
+      data = subject.open_file('mockedfile.txt')
+      word_count = subject.count_words(data)
+      expect(subject.prepare_word_count(word_count)).to include ('file => 2 (prime)')
     end
 
   end
