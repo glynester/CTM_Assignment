@@ -45,6 +45,13 @@ describe Words do
       expect(subject.prepare_word_count(word_count)).to include ('file => 2 (prime)')
     end
 
+    it "should display the correct output on screen" do
+      data = subject.open_file('mockedfile.txt')
+      word_count = subject.count_words(data)
+      final = subject.prepare_word_count(word_count)
+      expect { subject.display_word_count(final) }.to output("test => 1\nfile => 2 (prime)\nnot => 1\nreal => 1\n").to_stdout
+    end
+
   end
 
 end
