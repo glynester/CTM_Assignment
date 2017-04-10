@@ -10,4 +10,11 @@ describe Words do
     end
   end
 
+  context "Screen display" do
+    subject {described_class.new("test.txt")}
+    it "Displays the correct screen information" do
+      expect { subject.show_info }.to output(/NOTE: You can run this program by /).to_stdout
+    end
+  end
+
 end

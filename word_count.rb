@@ -4,10 +4,10 @@ class Words
     show_info
     prompt_user(file_inp) if file_inp == ""
     raise ("There is no file called '#{file_inp}' at this location.") if !file_exists?(file_inp)
-    text = open_file(file_inp)
-    word_count = count_words(text)
-    final_file = prepare_word_count(word_count)
-    display_word_count(final_file)
+    # text = open_file(file_inp)
+    # word_count = count_words(text)
+    # final_file = prepare_word_count(word_count)
+    # display_word_count(final_file)
   end
 
   def show_info
@@ -61,4 +61,4 @@ class Words
 end
 
 
-x = Words.new("test.txt")
+# x = Words.new("test.txt")
