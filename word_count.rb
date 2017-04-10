@@ -1,23 +1,6 @@
-# def words(file_inp="")
-#   # require 'prime'
-#   show_info
-#   prompt_user(file_inp) if file_inp == ""
-#   raise ("There is no file called '#{file_inp}' at this location.") if !file_exists?(file_inp)
-#   text = open_file(file_inp)
-#   word_count = count_words(text)
-#   final_file = prepare_word_count(word_count)
-#   display_word_count(final_file)
-# end
-
 class Words
 
   def initialize(file_inp="")
-    # require 'prime'
-    # rescue NameError => e
-    #   puts e.message
-    # end
-    # raise ("File name must be a string.")unless file_inp.instance_of? String
-    # rescue "File name must be a string."
     show_info
     prompt_user(file_inp) if file_inp == ""
     raise ("There is no file called '#{file_inp}' at this location.") if !file_exists?(file_inp)
@@ -77,7 +60,5 @@ class Words
 
 end
 
-# words
-# words("test.txt")
 
 x = Words.new("test.txt")
