@@ -3,10 +3,8 @@ class Words
   def initialize(file_inp="")
     show_info
     @file_inp = file_inp
-    @file_inp = prompt_user(file_inp) if file_inp == ""
-    # @file_inp = " " if @file_inp == ""
-    # p "=>#{@file_inp}<="; puts
-    raise ("There is no file called '#{@file_inp}' at this location.") if !file_exists?
+    @file_inp = prompt_user if file_inp == ""
+    raise ("There is no file called '#{@file_inp}' at this location.") if !file_exists? #|| @file_inp == ""
   end
 
   def show_info
@@ -14,26 +12,22 @@ class Words
     puts "NOTE: You can run this program by calling 'x=Words.new' or 'x=Words.new(\"file_name.txt\")'."; puts
   end
 
-  def prompt_user(file_inp)
+  def prompt_user
     print "Enter the name of the file: "
     @file_inp = gets.chomp
-    # p "=>#{@file_inp}<="; puts
-    # @file_inp = " " if @file_inp == ""
-    # p "=>#{@file_inp}<="; puts
   end
 
   def open_file
     text = ""
-    File.open("./#{@file_inp}").each do |line|
-      text << line
+    begin
+      File.open("./#{@file_inp}").each do |line| text << line end
+    rescue Errno::EISDIR
+      raise ("There is no file called '' at this location.")
     end
     text
   end
 
   def file_exists?
-    # @file_inp = " " if @file_inp == ""
-    # p "=>#{@file_inp}<="; puts
-    # p File.exists?("./#{@file_inp}")
     File.exists?("./#{@file_inp}")
   end
 

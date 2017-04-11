@@ -14,10 +14,15 @@ describe Words do
     it 'Throws an error if the file is not given in quotes' do
       expect { Words.new(no_quotes.txt) }.to raise_error(NameError)
     end
+    subject {described_class.new}
+    it 'Handles the "this is a directory" exception when no file is provided.' do
+      expect { subject.open_file }.to raise_error("There is no file called '' at this location.")
+    end
   end
 
   before { File.write('mockedfile.txt', "A test file not a real file") }
   context "Screen display and prompts" do
+
     subject {described_class.new("mockedfile.txt")}
     it "Displays the correct screen information" do
       expect { subject.show_info }.to output(/NOTE: You can run this program by /).to_stdout
