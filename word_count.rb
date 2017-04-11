@@ -1,7 +1,7 @@
 class Words
 
   def initialize(file_inp="")
-    show_info
+    # show_info
     prompt_user(file_inp) if file_inp == ""
     raise ("There is no file called '#{file_inp}' at this location.") if !file_exists?(file_inp)
     # text = open_file(file_inp)

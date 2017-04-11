@@ -12,8 +12,9 @@ describe Words do
     end
   end
 
+  before { File.write('mockedfile.txt', "A test file not a real file") }
   context "Screen display and prompts" do
-    subject {described_class.new("test.txt")}
+    subject {described_class.new("mockedfile.txt")}
     it "Displays the correct screen information" do
       expect { subject.show_info }.to output(/NOTE: You can run this program by /).to_stdout
     end
@@ -23,9 +24,8 @@ describe Words do
     end
   end
 
-  before { File.write('mockedfile.txt', "A test file not a real file") }
   context 'Check file content' do
-    subject {described_class.new}
+    subject {described_class.new 'mockedfile.txt'}
     it "Should open the file provided and read the contents" do
       expect(subject.open_file('mockedfile.txt')).to eq("A test file not a real file")
     end
