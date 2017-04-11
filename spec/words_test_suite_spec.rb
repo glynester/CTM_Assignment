@@ -16,6 +16,7 @@ describe Words do
     end
     subject {described_class.new}
     it 'Handles the "this is a directory" exception when no file is provided.' do
+      allow(subject).to receive(:prompt_user).and_return("")      # Line not working. Would stop test pausing for input if it worked.
       expect { subject.open_file }.to raise_error("There is no file called '' at this location.")
     end
   end
