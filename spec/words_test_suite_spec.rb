@@ -3,6 +3,10 @@ require_relative "../word_count"
 
 
 describe Words do
+  before do
+    allow($stdout).to receive(:puts).and_return("")
+  end
+
   context "Raising errors" do
     it 'Throws an error if the file does not exist' do
       expect { Words.new("file_not_there.txt") }.to raise_error("There is no file called 'file_not_there.txt' at this location.")
@@ -27,11 +31,11 @@ describe Words do
   context 'Check file content' do
     subject {described_class.new 'mockedfile.txt'}
     it "Should open the file provided and read the contents" do
-      expect(subject.open_file('mockedfile.txt')).to eq("A test file not a real file")
+      expect(subject.open_file).to eq("A test file not a real file")
     end
 
     it "should return a correct count of words" do
-      data = subject.open_file('mockedfile.txt')
+      data = subject.open_file
       expect(subject.count_words(data)).to include("file"=>2)
     end
 
@@ -40,16 +44,16 @@ describe Words do
     end
 
     it "should add '(prime)' if the word count is prime" do
-      data = subject.open_file('mockedfile.txt')
+      data = subject.open_file
       word_count = subject.count_words(data)
       expect(subject.prepare_word_count(word_count)).to include ('file => 2 (prime)')
     end
 
     it "should display the correct output on screen" do
-      data = subject.open_file('mockedfile.txt')
+      data = subject.open_file
       word_count = subject.count_words(data)
       final = subject.prepare_word_count(word_count)
-      expect { subject.display_word_count(final) }.to output("test => 1\nfile => 2 (prime)\nnot => 1\nreal => 1\n").to_stdout
+      expect { subject.display_word_count(final) }.to output("a => 2 (prime)\nfile => 2 (prime)\nnot => 1\nreal => 1\ntest => 1\n").to_stdout
     end
 
   end

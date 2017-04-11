@@ -1,39 +1,44 @@
 class Words
 
   def initialize(file_inp="")
-    # show_info
-    prompt_user(file_inp) if file_inp == ""
-    raise ("There is no file called '#{file_inp}' at this location.") if !file_exists?(file_inp)
-    # text = open_file(file_inp)
-    # word_count = count_words(text)
-    # final_file = prepare_word_count(word_count)
-    # display_word_count(final_file)
+    show_info
+    @file_inp = file_inp
+    @file_inp = prompt_user(file_inp) if file_inp == ""
+    # @file_inp = " " if @file_inp == ""
+    # p "=>#{@file_inp}<="; puts
+    raise ("There is no file called '#{@file_inp}' at this location.") if !file_exists?
   end
 
   def show_info
     puts "Paste a .txt file into the same folder as this application."
-    puts "NOTE: You can run this program by calling 'words' or 'words(\"file_name.txt\")'."; puts
+    puts "NOTE: You can run this program by calling 'x=Words.new' or 'x=Words.new(\"file_name.txt\")'."; puts
   end
 
   def prompt_user(file_inp)
-    puts "Enter the name of the file below:"
-    file_inp = gets.chomp
+    print "Enter the name of the file: "
+    @file_inp = gets.chomp
+    # p "=>#{@file_inp}<="; puts
+    # @file_inp = " " if @file_inp == ""
+    # p "=>#{@file_inp}<="; puts
   end
 
-  def open_file(file_inp)
+  def open_file
     text = ""
-    File.open("./#{file_inp}").each do |line|
+    File.open("./#{@file_inp}").each do |line|
       text << line
     end
     text
   end
 
-  def file_exists?(file_inp)
-    File.exists?("./#{file_inp}")
+  def file_exists?
+    # @file_inp = " " if @file_inp == ""
+    # p "=>#{@file_inp}<="; puts
+    # p File.exists?("./#{@file_inp}")
+    File.exists?("./#{@file_inp}")
   end
 
   def count_words(text)
-    text = text.scan(/[\w]+['-]?[\w]+/)     # Single letters not allowed by this!
+    text = text.scan(/\b[aio]\b|[\w]+['-]?[\w]+/i)     # Assume only a,i,o allowed as single letters.
     word_hash = Hash.new(0)
     text.each{|w| word_hash[w.downcase]+=1 }
     word_hash
@@ -41,6 +46,7 @@ class Words
 
   def prepare_word_count(word_count)
     word_count_prime=[]
+    word_count=word_count.sort.to_h
     word_count.each{|k,v|
       val = "#{k} => #{v}"
       val += " (prime)" if is_prime?(v)
@@ -59,6 +65,3 @@ class Words
   end
 
 end
-
-
-# x = Words.new("test.txt")
