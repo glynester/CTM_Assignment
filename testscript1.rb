@@ -1,7 +1,6 @@
 require "./word_count"
 
 words = Words.new("test.txt")
-words.show_info
 text = words.open_file
 word_count = words.count_words(text)
 final_file = words.prepare_word_count(word_count)

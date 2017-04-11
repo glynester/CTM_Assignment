@@ -1,7 +1,5 @@
 require_relative "../word_count"
 
-
-
 describe Words do
   before do
     allow($stdout).to receive(:puts).and_return("")
