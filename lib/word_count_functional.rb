@@ -58,3 +58,6 @@ end
 
 # words
 words("test.txt")
+
+# Run from the command line with:
+# ruby ./lib/word_count_functional.rb
