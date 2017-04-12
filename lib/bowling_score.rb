@@ -92,3 +92,6 @@ print bowling_score("--|--|--|--|--|--|--|--|--|X||X8"); puts # 28
 # ERROR SCENARIOS:
 # print bowling_score("--|--|--|--|--|--|--|--|--|X||8"); puts # error
 # print bowling_score("8/|8/|8/|8/|8/|8/|8/|8/|8/|8/||8X"); puts # error
+
+# Run from the command line with:
+# ruby ./lib/bowling_score.rb
