@@ -1,4 +1,4 @@
-require_relative "../get_file"
+require_relative "../lib/get_file"
 
 describe Inp_File do
   before do

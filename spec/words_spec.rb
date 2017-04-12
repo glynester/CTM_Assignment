@@ -1,4 +1,4 @@
-require_relative "../word_count"
+require_relative "../lib/word_count"
 
 describe Words do
   before do

@@ -1,5 +1,5 @@
-require "./word_count"
-require "./get_file"
+require "./lib/word_count"
+require "./lib/get_file"
 
 # Create a file object.
 f = Inp_File.new
