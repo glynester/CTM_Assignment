@@ -4,14 +4,14 @@ class Inp_File
 
   def initialize(file_inp="")
     @file_inp = file_inp
-    @file_inp = prompt_user if file_inp == ""
     show_info
+    @file_inp = prompt_user if file_inp == ""
     raise ("There is no file called '#{@file_inp}' at this location.") if !file_exists?
   end
 
   def show_info
     puts "Paste a .txt file into the same folder as this application."
-    # puts "NOTE: You can run this program by calling 'x=Words.new' or 'x=Words.new(\"file_name.txt\")'."; puts
+    puts "NOTE: You can run this program by calling 'f=Inp_File.new' or 'f=Inp_File.new(\"file_name.txt\")'."; puts
   end
 
   def open_file

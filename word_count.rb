@@ -4,8 +4,6 @@ class Words
     @text = text
   end
 
-
-
   def count_words
     @text = @text.scan(/\b[aio]\b|[\w]+['-]?[\w]+/i)     # Assume only a,i,o allowed as single letters.
     word_hash = Hash.new(0)
