@@ -12,11 +12,6 @@ class Words
     puts "NOTE: You can run this program by calling 'x=Words.new' or 'x=Words.new(\"file_name.txt\")'."; puts
   end
 
-  def prompt_user
-    print "Enter the name of the file: "
-    @file_inp = gets.chomp
-  end
-
   def open_file
     text = ""
     begin
@@ -25,10 +20,6 @@ class Words
       raise ("There is no file called '' at this location.")
     end
     text
-  end
-
-  def file_exists?
-    File.exists?("./#{@file_inp}")
   end
 
   def count_words(text)
@@ -57,5 +48,17 @@ class Words
     require 'prime'
     Prime.instance.prime?(num)
   end
+
+  private
+
+  def prompt_user
+    print "Enter the name of the file: "
+    @file_inp = gets.chomp
+  end
+
+  def file_exists?
+    File.exists?("./#{@file_inp}")
+  end
+
 
 end
