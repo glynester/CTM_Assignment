@@ -1,18 +1,15 @@
 class Words
 
-  def initialize(file_inp="")
-    show_info
+  def initialize(text="")
+    @text = text
   end
 
-  def show_info
-    puts "Paste a .txt file into the same folder as this application."
-    puts "NOTE: You can run this program by calling 'x=Words.new' or 'x=Words.new(\"file_name.txt\")'."; puts
-  end
 
-  def count_words(text)
-    text = text.scan(/\b[aio]\b|[\w]+['-]?[\w]+/i)     # Assume only a,i,o allowed as single letters.
+
+  def count_words
+    @text = @text.scan(/\b[aio]\b|[\w]+['-]?[\w]+/i)     # Assume only a,i,o allowed as single letters.
     word_hash = Hash.new(0)
-    text.each{|w| word_hash[w.downcase]+=1 }
+    @text.each{|w| word_hash[w.downcase]+=1 }
     word_hash
   end
 
@@ -36,11 +33,6 @@ class Words
     Prime.instance.prime?(num)
   end
 
-  private
 
-  def prompt_user
-    print "Enter the name of the file: "
-    @file_inp = gets.chomp
-  end
 
 end
